@@ -8,11 +8,11 @@
   <name>6 Buntton Keypad</name>
   <model>6 Buntton Keypad</model>
   <created>05/24/2018 9:03 AM</created>
-  <modified>05/24/2018 9:46 AM</modified>
+  <modified>05/25/2018 9:23 AM</modified>
   <!-- 
 	Each time you modify the driver update the version number below.
 	-->
-  <version>1</version>
+  <version>5</version>
   <capabilities>
     <!-- 
 		These are the modes the camera might support.  If the camera does not support H264 then remove the H264 entries
@@ -147,17 +147,6 @@
     <power_delay>0</power_delay>
     <power_command_needed>False</power_command_needed>
     <actions>
-      <action>
-        <name>SendToTCP</name>
-        <command>SendToTCP</command>
-        <params>
-          <param>
-            <name>MSG</name>
-            <type>STRING</type>
-            <default></default>
-          </param>
-        </params>
-      </action>
       <action>
         <name>Sync</name>
         <command>Sync</command>

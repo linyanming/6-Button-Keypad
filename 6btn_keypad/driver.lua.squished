@@ -3154,27 +3154,13 @@ function LUA_ACTION.TemplateVersion()
 end
 
 
-function LUA_ACTION.PrintVolumeCurve()
-    print("===== Volume Curve =====")
-    for j,k in pairs(tVolumeCurve) do
-	   print(j,k)
-    end
-end
 
-function LUA_ACTION.SendToTCP(tParams)
-	print("send to tcp")
-	for cmd,cmdv in pairs(tParams) do
-	   if(cmd == "MSG" and cmdv ~= nil) then
-		  gCon:SendCommand(cmdv,1,"SECONDS","normal")
-		  break
-	   end
-     end
-	
-end
-
-function LUA_ACTION.Sync(tParams)
-    print("sync device")
-    IP_DEVICES_ADDR.init()
+function LUA_ACTION.Sync()
+     print("sync device")
+     local devid = C4:GetDeviceID()
+	local dest_id = C4:GetBoundProviderDevice(devid,1) 
+	print("Id is " .. dest_id)
+	C4:SendToDevice(dest_id,"SYNCDEV",{DEVICE_ID = devid})
 end
  end)
 package.preload['lib.c4_xml'] = (function (...)
@@ -4047,10 +4033,16 @@ end
 --	LogTrace(tParams)
 --end
 
-function EX_CMD.SENDDEV(tParams)
-	LogTrace("EX_CMD.SENDDEV")
+function EX_CMD.BTNPRESS(tParams)
+	LogTrace("EX_CMD.BTNPRESS")
 	LogTrace(tParams)
-	gCon:SendCommand("HELLO WORLD",1,"SECONDS","normal")
+	local buttonid = tParams["BUTTON_ID"]
+	local cmd = {}
+     cmd.BUTTON_ID = buttonid
+     cmd.ACTION = 1
+	NOTIFY.KEYPAD_BUTTON_ACTION(gKeypadProxy._BindingID,cmd)
+	cmd.ACTION = 2
+	NOTIFY.KEYPAD_BUTTON_ACTION(gKeypadProxy._BindingID,cmd)
 end end)
 package.preload['proxy_commands'] = (function (...)
 --[[=============================================================================
@@ -4263,7 +4255,7 @@ require "keypad.keypad_proxy_class"
 require "keypad.keypad_proxy_commands"
 require "keypad.keypad_proxy_notifies"
 
-IP_DEVICES_ADDR = {}
+
 DEVICE_ADDR = {}
 -- This macro is utilized to identify the version string of the driver template version used.
 if (TEMPLATE_VERSION ~= nil) then

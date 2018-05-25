@@ -18,8 +18,14 @@ end
 --	LogTrace(tParams)
 --end
 
-function EX_CMD.SENDDEV(tParams)
-	LogTrace("EX_CMD.SENDDEV")
+function EX_CMD.BTNPRESS(tParams)
+	LogTrace("EX_CMD.BTNPRESS")
 	LogTrace(tParams)
-	gCon:SendCommand("HELLO WORLD",1,"SECONDS","normal")
+	local buttonid = tParams["BUTTON_ID"]
+	local cmd = {}
+     cmd.BUTTON_ID = buttonid
+     cmd.ACTION = 1
+	NOTIFY.KEYPAD_BUTTON_ACTION(gKeypadProxy._BindingID,cmd)
+	cmd.ACTION = 2
+	NOTIFY.KEYPAD_BUTTON_ACTION(gKeypadProxy._BindingID,cmd)
 end

@@ -16,25 +16,11 @@ function LUA_ACTION.TemplateVersion()
 end
 
 
-function LUA_ACTION.PrintVolumeCurve()
-    print("===== Volume Curve =====")
-    for j,k in pairs(tVolumeCurve) do
-	   print(j,k)
-    end
-end
 
-function LUA_ACTION.SendToTCP(tParams)
-	print("send to tcp")
-	for cmd,cmdv in pairs(tParams) do
-	   if(cmd == "MSG" and cmdv ~= nil) then
-		  gCon:SendCommand(cmdv,1,"SECONDS","normal")
-		  break
-	   end
-     end
-	
-end
-
-function LUA_ACTION.Sync(tParams)
-    print("sync device")
-    IP_DEVICES_ADDR.init()
+function LUA_ACTION.Sync()
+     print("sync device")
+     local devid = C4:GetDeviceID()
+	local dest_id = C4:GetBoundProviderDevice(devid,1) 
+	print("Id is " .. dest_id)
+	C4:SendToDevice(dest_id,"SYNCDEV",{DEVICE_ID = devid})
 end

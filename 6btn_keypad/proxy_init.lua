@@ -7,7 +7,7 @@ require "keypad.keypad_proxy_class"
 require "keypad.keypad_proxy_commands"
 require "keypad.keypad_proxy_notifies"
 
-IP_DEVICES_ADDR = {}
+
 DEVICE_ADDR = {}
 -- This macro is utilized to identify the version string of the driver template version used.
 if (TEMPLATE_VERSION ~= nil) then
