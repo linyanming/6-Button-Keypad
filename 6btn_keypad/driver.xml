@@ -8,11 +8,11 @@
   <name>6 Buntton Keypad</name>
   <model>6 Buntton Keypad</model>
   <created>05/24/2018 9:03 AM</created>
-  <modified>05/25/2018 9:23 AM</modified>
+  <modified>05/28/2018 1:05 PM</modified>
   <!-- 
 	Each time you modify the driver update the version number below.
 	-->
-  <version>5</version>
+  <version>7</version>
   <capabilities>
     <!-- 
 		These are the modes the camera might support.  If the camera does not support H264 then remove the H264 entries
@@ -136,6 +136,13 @@
                 properties can be used to set which stream to use for specific resolutions or type. If the camera does not support 
                 multiple stream configurations using profiles, then the Stream Profile properties can be removed.
             -->
+      <property>
+        <name>DeviceID</name>
+        <type>RANGED_INTEGER</type>
+        <default>0</default>
+        <minimum>0</minimum>
+        <maximum>64</maximum>
+      </property>
     </properties>
     <!-- 
 		Update the documentation rtf file then copy the text version between the two documentation tabs for Composer Express

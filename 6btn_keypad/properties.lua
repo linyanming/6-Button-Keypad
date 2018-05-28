@@ -9,6 +9,10 @@ if (TEMPLATE_VERSION ~= nil) then
 	TEMPLATE_VERSION.properties = "2017.01.13"
 end
 
+function ON_PROPERTY_CHANGED.DeviceID(propertyValue)
+   gKeypadProxy._SyncDevid = tonumber(propertyValue)
+end
+
 --[[
 function ON_PROPERTY_CHANGED.MJPEGStreamID(propertyValue)
 	gCameraProxy._MJPEG_Stream_ID = tonumber(propertyValue)

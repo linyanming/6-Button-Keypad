@@ -1,0 +1,29 @@
+---- Log Level Matches (4 in 2 files) ----
+c4_log.lua (6btn_keypad\lib) line 17 : 	self._logLevel = tonumber(string.sub(Properties['Log Level'] or "", 1, 1)) or 5
+c4_log.lua (6btn_keypad\lib) line 23 : 	C4:UpdateProperty("Log Level", Properties['Log Level'])
+driver.xml (6btn_keypad) line 104 :         <name>Log Level</name>
+---- EX_CMD Matches (19 in 4 files) ----
+c4_command.lua (6btn_keypad\common) line 36 : 	if (EX_CMD[sCommand] ~= nil and type(EX_CMD[sCommand]) == "function") then
+c4_command.lua (6btn_keypad\common) line 37 : 		status, ret = pcall(EX_CMD[sCommand], tParams)
+c4_command.lua (6btn_keypad\common) line 39 : 	elseif (EX_CMD[trimmedCommand] ~= nil and type(EX_CMD[trimmedCommand]) == "function") then
+c4_command.lua (6btn_keypad\common) line 40 : 		status, ret = pcall(EX_CMD[trimmedCommand], tParams)
+c4_command.lua (6btn_keypad\common) line 41 : 	elseif (EX_CMD[sCommand] ~= nil) then
+c4_command.lua (6btn_keypad\common) line 42 : 		QueueCommand(EX_CMD[sCommand])
+c4_command.lua (6btn_keypad\common) line 57 :     EX_CMD.LUA_ACTION(tParams)
+c4_command.lua (6btn_keypad\common) line 69 : function EX_CMD.LUA_ACTION(tParams)
+c4_driver_declarations.lua (6btn_keypad\common) line 13 : EX_CMD = {}
+device_specific_commands.lua (6btn_keypad) line 13 :     Define any functions for device specific commands (EX_CMD.<command>)
+device_specific_commands.lua (6btn_keypad) line 16 : --function EX_CMD.NEW_COMMAND(tParams)
+device_specific_commands.lua (6btn_keypad) line 17 : --	LogTrace("EX_CMD.NEW_COMMAND")
+device_specific_commands.lua (6btn_keypad) line 21 : function EX_CMD.BTNPRESS(tParams)
+device_specific_commands.lua (6btn_keypad) line 22 : 	LogTrace("EX_CMD.BTNPRESS")
+device_specific_commands.lua (6btn_keypad) line 33 : function EX_CMD.RECVMSG(tParams)
+device_specific_commands.lua (6btn_keypad) line 34 :     LogTrace("EX_CMD.RECVMSG")
+keypad_proxy_class.lua (6btn_keypad\keypad) line 39 :     LogTrace("EX_CMD.RECVMSG")
+---- ExecuteCommand Matches (6 in 2 files) ----
+c4_command.lua (6btn_keypad\common) line 14 :     ExecuteCommand(sCommand, tParams)
+c4_command.lua (6btn_keypad\common) line 27 : function ExecuteCommand(sCommand, tParams)
+c4_command.lua (6btn_keypad\common) line 28 : 	LogTrace("ExecuteCommand(" .. sCommand .. ")")
+c4_command.lua (6btn_keypad\common) line 45 : 		LogInfo("ExecuteCommand: Unhandled command = " .. sCommand)
+device_specific_commands.lua (6btn_keypad) line 11 :     ExecuteCommand Code
+device_specific_commands.lua (6btn_keypad) line 14 :     received from ExecuteCommand that need to be handled by the driver.

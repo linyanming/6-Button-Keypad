@@ -35,7 +35,7 @@ function KeypadProxy:dev_Newbuttoncreate(buttonid,buttonname)
 	NOTIFY.NEW_KEYPAD_BUTTON(self._BindingID, new_button)
 end
 
-function KeypadProxy:HandleMessage(message,msglen)
+function KeypadProxy:HandleMessage(message)
     LogTrace("EX_CMD.RECVMSG")
     hexdump(message)
     if(#message ~= self._PackLen) then
